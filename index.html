@@ -26,13 +26,9 @@
 #victoryDialog,.guild-recovery{width:min(390px,calc(100% - 32px));box-sizing:border-box;background:#17151c;color:#f5eee2;border:2px solid #b78b3e;border-radius:14px;padding:22px;box-shadow:0 12px 60px #000a}#victoryDialog::backdrop,.guild-recovery::backdrop{background:#000b}.victory-heading{text-align:center}.victory-heading h2{color:#e7bf65;font-size:26px;margin:8px 0}.victory-heading p{color:#d3c9b9}.victory-rewards{border-top:1px solid #665333;padding-top:12px;display:grid;gap:12px}.victory-rewards .between{gap:12px;flex-wrap:wrap}</style><style>
 #codexTitle{position:fixed;inset:0;z-index:100;background:radial-gradient(ellipse at 50% 35%,#65452d,#21150e 65%,#100b08);display:grid;place-items:center;overflow:auto;padding:24px;perspective:1200px;color:#f1d69a}
 #codexTitle[hidden]{display:none}
-#codexTitle.opening{animation:codexDissolve 1.35s ease forwards}
-#codexTitle::after{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(ellipse at center,#fff5d6,#e8bd65 35%,transparent 78%);opacity:0;z-index:2}
-#codexTitle.opening::after{animation:codexGlow 1.35s ease forwards}
-@keyframes codexGlow{0%,32%{opacity:0}58%{opacity:.85}100%{opacity:0}}
-@keyframes codexDissolve{0%,58%{opacity:1}100%{opacity:0}}
-@media(prefers-reduced-motion:reduce){#codexTitle.opening,#codexTitle.opening::after{animation:none}}
-
+#codexFlash{position:fixed;inset:0;z-index:10000;pointer-events:none;background:radial-gradient(ellipse at center,#fff9e8 0%,#ffe3a0 55%,#c89745 100%);opacity:0;transition:opacity 450ms ease;visibility:hidden}
+#codexFlash.visible{visibility:visible}
+#codexFlash.lit{opacity:1;transition-duration:350ms}
 .title-stage{width:min(310px,85vw);text-align:center}
 .title-book{position:relative;height:390px;max-height:65vh;min-height:260px;perspective:1000px;margin:0 auto 24px;text-align:center}
 .title-pages,.title-cover{position:absolute;inset:0;border-radius:5px 14px 14px 5px;box-shadow:8px 12px 24px #0009}
@@ -175,7 +171,7 @@ function escapeEncounter(){if(!battle)return;const destination=battle.returnTab|
 function buy(id,name,cost){if(s.character.gold<cost||!confirm(`Purchase ${name} for ${cost} Gold?`))return;s.character.gold-=cost;s.purchases.push({id,name,cost});s.inventory.push({id,name});save();render();say('Purchase recorded.')}
 function backup(){let a=document.createElement('a'),u=URL.createObjectURL(new Blob([JSON.stringify(s,null,2)],{type:'application/json'}));a.href=u;a.download='ACodex-backup.json';a.click();URL.revokeObjectURL(u);say('Backup export started.')}
 function restore(e){let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=()=>{try{let x=JSON.parse(r.result);if(!x.character||!Array.isArray(x.active)||!Array.isArray(x.completed))throw 0;if(!confirm('Replace current progress with this backup?'))return;s=x;save();render();say('Backup restored.')}catch(_){say('Invalid backup file.')}e.target.value=''};r.readAsText(f)}
-function enterCodex(){const title=document.getElementById('codexTitle');if(title.classList.contains('opening'))return;title.classList.add('opening');title.querySelector('button').disabled=true;tab='status';characterSection='status';render();setTimeout(()=>{title.hidden=true;document.querySelector('.app').inert=false;document.querySelector('nav button[data-tab="status"]').focus();},matchMedia('(prefers-reduced-motion: reduce)').matches?0:1350);}
+function enterCodex(){const title=document.getElementById('codexTitle');if(title.classList.contains('opening'))return;title.classList.add('opening');title.querySelector('button').disabled=true;tab='status';characterSection='status';render();const flash=document.createElement('div');flash.id='codexFlash';flash.setAttribute('aria-hidden','true');document.body.appendChild(flash);const reveal=()=>{title.hidden=true;document.querySelector('.app').inert=false;document.querySelector('nav button[data-tab="status"]').focus();};if(matchMedia('(prefers-reduced-motion: reduce)').matches){reveal();flash.remove();return;}flash.classList.add('visible');setTimeout(()=>flash.classList.add('lit'),400);setTimeout(()=>{reveal();flash.classList.remove('lit');},800);setTimeout(()=>flash.remove(),1350);}
 document.querySelector('.app').inert=true;
 save();render();
 </script></body></html>
