@@ -1,0 +1,18 @@
+{
+  "id": "./",
+  "name": "Adventurer’s Codex",
+  "short_name": "ACodex",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#21150e",
+  "theme_color": "#24180f",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
