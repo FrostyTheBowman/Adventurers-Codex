@@ -123,3 +123,13 @@
 @keyframes rangedTrail{0%{transform:scaleX(0);opacity:0}50%{transform:scaleX(1);opacity:.9}100%{transform:scaleX(1);opacity:0}}
 @keyframes rangedBurst{0%{transform:scale(.25);opacity:0}25%{transform:scale(1);opacity:1}100%{transform:scale(1.5);opacity:0}}
 @media(prefers-reduced-motion:reduce){.ranged-track{display:none}.ranged-impact i,.ranged-impact b{animation:none;transform:translate(-50%,-50%)}}
+
+/* Bow damage hit splat */
+.ranged-fx.bow .ranged-impact i{display:none}
+.bow-hit-splat{position:absolute;left:-36px;top:-36px;width:72px;height:72px;display:grid;place-items:center;animation:bowSplat .68s .28s both;filter:drop-shadow(0 0 7px #ff303b)}
+.bow-hit-splat svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.bow-hit-splat path{fill:#a51622;stroke:#ff5757;stroke-width:2.5;stroke-linejoin:round}
+.bow-hit-splat strong{position:relative;color:white;font:bold 27px Georgia,serif;text-shadow:0 2px 3px #450009}
+.finishing .bow-hit-splat{width:84px;height:84px;left:-42px;top:-42px}
+@keyframes bowSplat{0%{opacity:0;transform:scale(.25)}18%{opacity:1;transform:scale(1.15)}32%,72%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(1.08)}}
+@media(prefers-reduced-motion:reduce){.bow-hit-splat{animation:none}}
