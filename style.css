@@ -166,3 +166,5 @@
 
 /* Guild rank heraldry */
 .rank-insignia{--rank-metal:#a6a7a1;--rank-cloth:#45494a;position:relative;isolation:isolate;width:39px;height:49px;background:var(--rank-metal);text-shadow:0 1px 2px #000;clip-path:polygon(0 0,100% 0,100% 70%,50% 100%,0 70%);padding-bottom:5px;box-sizing:border-box}.rank-insignia:before{content:"";position:absolute;inset:2px;z-index:-1;background:linear-gradient(135deg,#ffffff18,transparent 45%),var(--rank-cloth);clip-path:inherit}.rank-insignia[data-rank="E"]{--rank-metal:#bb956b;--rank-cloth:#60432e}.rank-insignia[data-rank="D"]{--rank-metal:#c5c9bf;--rank-cloth:#46514d}.rank-insignia[data-rank="C"]{--rank-metal:#91b5c9;--rank-cloth:#28475b}.rank-insignia[data-rank="B"]{--rank-metal:#b7a0cc;--rank-cloth:#51405f}.rank-insignia[data-rank="A"],.rank-insignia[data-rank="S"]{--rank-metal:#e5c477;--rank-cloth:#66512c}
+
+.attribute-plaque{display:block;width:36px;height:36px;max-width:100%;filter:drop-shadow(0 1px 1px #57452d55)}.compact-hub .attribute-plaque{width:clamp(25px,5.8dvh,36px);height:clamp(25px,5.8dvh,36px)}.guild-tag{display:block;flex:none;width:48px;height:58px;filter:drop-shadow(0 2px 2px #0007)}
