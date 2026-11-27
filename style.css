@@ -146,3 +146,6 @@
 @keyframes swordEdge{0%{clip-path:inset(100% 0 0 0);opacity:1}35%{clip-path:inset(0);opacity:1}100%{opacity:0}}
 @keyframes swordAfter{0%{opacity:0;clip-path:inset(100% 0 0 0)}25%{opacity:.75;clip-path:inset(0)}100%{opacity:0}}
 @media(prefers-reduced-motion:reduce){.sword-hit-splat,.player-impact.sword>svg,.player-impact.sword .player-edge,.player-impact.sword .player-sweep{animation:none}}
+
+/* Alternate sword sweep direction, keeping damage text upright */
+.player-impact.sword.mirrored>svg{transform:scaleX(-1) rotate(calc(var(--strike-angle)*.45))}
