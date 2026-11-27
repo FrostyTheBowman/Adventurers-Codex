@@ -149,3 +149,5 @@
 
 /* Alternate sword sweep direction, keeping damage text upright */
 .player-impact.sword.mirrored>svg{transform:scaleX(-1) rotate(calc(var(--strike-angle)*.45))}
+
+.gather-rock{width:160px;height:110px;align-self:center}.rock-crack{opacity:0}.gather-rock.cracked .rock-crack{opacity:1}.gather-pick{position:absolute;left:35%;top:15%;font-size:64px;transform-origin:20% 90%;animation:gatherSwing .7s both;pointer-events:none}.gather-rock.shattered .rock-left{animation:rockLeft .8s .25s both}.gather-rock.shattered .rock-right{animation:rockRight .8s .25s both}@keyframes gatherSwing{0%{transform:rotate(-65deg);opacity:1}45%{transform:rotate(30deg)}100%{transform:rotate(15deg);opacity:0}}@keyframes rockLeft{to{transform:translate(-55px,25px) rotate(-20deg);opacity:0}}@keyframes rockRight{to{transform:translate(55px,25px) rotate(20deg);opacity:0}}@media(prefers-reduced-motion:reduce){.gather-pick,.gather-rock.shattered{animation:none;opacity:0}}
