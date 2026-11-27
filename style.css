@@ -170,3 +170,5 @@
 .attribute-plaque{display:block;width:36px;height:36px;max-width:100%;filter:drop-shadow(0 1px 1px #57452d55)}.compact-hub .attribute-plaque{width:clamp(25px,5.8dvh,36px);height:clamp(25px,5.8dvh,36px)}.guild-tag{display:block;flex:none;width:48px;height:58px;filter:drop-shadow(0 2px 2px #0007)}
 
 .rustic-destinations .destination-art{display:block;width:100%;height:auto;aspect-ratio:140/61;object-fit:cover}.compact-hub .rustic-destinations .destination-art{height:clamp(28px,7dvh,58px)}.rustic-guild{display:flex;align-items:center;justify-content:center;gap:9px}
+
+.goblin-sprite{display:block;max-width:100%;max-height:100%;margin:auto;filter:drop-shadow(0 3px 2px #0008)}
