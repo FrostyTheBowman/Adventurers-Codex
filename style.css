@@ -89,3 +89,23 @@
 .rend-bright{fill:#ff3434;stroke:#ff6760;stroke-width:1.5;filter:drop-shadow(0 0 5px #ff2424);animation:rendBright .85s both}
 @keyframes rendDeep{0%{opacity:0;clip-path:inset(0 0 100% 0)}12%{opacity:1;clip-path:inset(0)}65%{opacity:.9}100%{opacity:0}}
 @keyframes rendBright{0%{opacity:0;clip-path:inset(0 0 100% 0)}25%{opacity:1;clip-path:inset(0)}55%{opacity:1}100%{opacity:0}}
+
+/* Player weapon impact effects */
+.attack-marker.player-impact{width:clamp(90px,35vw,180px);height:clamp(90px,35vw,180px);animation:none;filter:none}
+.player-impact svg{width:100%;height:100%;overflow:visible;animation:playerImpact .85s ease-out both;filter:drop-shadow(0 0 7px #fff5)}
+.player-impact.sword svg{transform:rotate(var(--strike-angle));filter:drop-shadow(0 0 9px #80d9ff)}
+.player-sweep{fill:#429cd4;opacity:.65}.player-edge{fill:#e3faff;stroke:#86dfff;stroke-width:2}
+.player-star{fill:#ffc366;opacity:.85}.player-ring{fill:none;stroke:#ffe4a1;stroke-width:3;transform-origin:center;animation:playerRing .65s ease-out both}
+.player-punch{animation:playerPunch .35s ease-out both}
+.player-arrow{animation:playerArrow .3s ease-out both}.bow .player-ring{stroke:#9dffbd;animation-delay:.22s}
+.player-orb{fill:#d5aaff;stroke:#8e4cff;stroke-width:7;filter:drop-shadow(0 0 10px #a96cff)}.staff .player-ring,.player-spark{stroke:#c9a0ff;stroke-width:3}.player-spark{animation:playerRing .7s ease-out both;transform-box:view-box;transform-origin:center}
+.player-damage{position:absolute;top:8%;left:50%;color:#fff4c5;text-shadow:0 2px 4px #000,0 0 6px #000;font-size:24px;animation:playerDamage .9s ease-out both;white-space:nowrap}
+.player-impact.finishing svg{filter:drop-shadow(0 0 15px #ffe1a0);scale:1.2}
+.battle-unit:has(>.player-impact)>.slime-sprite,.battle-unit:has(>.player-impact)>.wolf-sprite,.battle-scene:has(>.player-impact)>.slime-sprite,.battle-scene:has(>.player-impact)>.wolf-sprite{animation:playerRecoil .35s ease-out both}
+@keyframes playerImpact{0%{opacity:0;scale:.45}25%{opacity:1;scale:1.1}60%{opacity:.9}100%{opacity:0;scale:1.25}}
+@keyframes playerRing{from{scale:.35;opacity:1}to{scale:1.5;opacity:0}}
+@keyframes playerPunch{from{translate:-30px 35px;scale:.6}to{translate:0 0;scale:1}}
+@keyframes playerArrow{from{translate:-90px 90px;opacity:.2}to{translate:0 0;opacity:1}}
+@keyframes playerDamage{from{transform:translate(-50%,10px);opacity:1}70%{opacity:1}to{transform:translate(-50%,-35px);opacity:0}}
+@keyframes playerRecoil{0%,100%{translate:0;filter:none}35%{translate:5px -3px;filter:brightness(1.65)}}
+@media(prefers-reduced-motion:reduce){.player-impact svg,.player-impact svg *,.player-damage,.battle-unit:has(>.player-impact)>*,.battle-scene:has(>.player-impact)>.slime-sprite,.battle-scene:has(>.player-impact)>.wolf-sprite{animation:none!important}}
