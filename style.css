@@ -133,3 +133,16 @@
 .finishing .bow-hit-splat{width:84px;height:84px;left:-42px;top:-42px}
 @keyframes bowSplat{0%{opacity:0;transform:scale(.25)}18%{opacity:1;transform:scale(1.15)}32%,72%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(1.08)}}
 @media(prefers-reduced-motion:reduce){.bow-hit-splat{animation:none}}
+
+/* Standard sword diagonal sweep */
+.attack-marker.player-impact.sword{width:clamp(130px,62vw,290px);height:clamp(130px,62vw,290px)}
+.player-impact.sword>svg{animation:swordSweep .85s ease-out both;transform:rotate(calc(var(--strike-angle)*.45));filter:drop-shadow(0 0 10px #79caff)}
+.player-impact.sword .player-sweep{fill:#428bd2;animation:swordAfter .85s both}
+.player-impact.sword .player-edge{fill:#e8faff;stroke:#9cddff;animation:swordEdge .55s both}
+.sword-hit-splat{position:absolute;left:50%;top:50%;width:68px;height:68px;margin:-34px;display:grid;place-items:center;animation:bowSplat .68s .17s both;filter:drop-shadow(0 0 7px #ff303b)}
+.player-impact .sword-hit-splat svg{position:absolute;inset:0;width:100%;height:100%;animation:none;transform:none;scale:1;filter:none}
+.sword-hit-splat path{fill:#a51622;stroke:#ff5757;stroke-width:2.5;stroke-linejoin:round}.sword-hit-splat strong{position:relative;color:white;font:bold 27px Georgia,serif;text-shadow:0 2px 3px #450009}
+@keyframes swordSweep{0%{opacity:0;scale:.8}20%{opacity:1;scale:1}70%{opacity:1}100%{opacity:0;scale:1.12}}
+@keyframes swordEdge{0%{clip-path:inset(100% 0 0 0);opacity:1}35%{clip-path:inset(0);opacity:1}100%{opacity:0}}
+@keyframes swordAfter{0%{opacity:0;clip-path:inset(100% 0 0 0)}25%{opacity:.75;clip-path:inset(0)}100%{opacity:0}}
+@media(prefers-reduced-motion:reduce){.sword-hit-splat,.player-impact.sword>svg,.player-impact.sword .player-edge,.player-impact.sword .player-sweep{animation:none}}
